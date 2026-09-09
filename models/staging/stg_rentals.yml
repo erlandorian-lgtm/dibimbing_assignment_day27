@@ -1,0 +1,29 @@
+version: 2
+
+models: 
+  - name: stg_rentals
+    description: "Cleaned rentals data from raw Pagila data"
+    columns:
+      - name: rental_id
+        description: "Unique identifier for each rental made by customer"
+        tests: 
+          - unique
+          - not_null
+      - name: inventory_id
+        description: "identifier which film borrow by customer"
+        tests: 
+          - not_null
+      - name: customer_id
+        description: "identifier which customer borrow the film"
+        tests:
+          - not_null
+      - name: staff_id
+        description: "identifier which staff processed the rental"
+        tests: 
+          - not_null
+      - name: rented_at
+        description: "Date and time when the customer rental the film"
+        tests: 
+          - not_null
+      - name: return_at
+        description: "Date and time when the customer return the film. NULL if the customer hasn't returned it"

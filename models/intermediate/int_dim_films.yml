@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: int_dim_films
+    description: "Detailed information about film and whether it's available or not"
+    columns: 
+      - name: film_id
+        description: "Unique identifier for each film"
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: "Title of the film"
+        tests: 
+          - not_null
+      - name: categories 
+        description: "Define the categories for each film"
+        tests: 
+          - not_null
+      - name: rating
+        description: "Whether the film suitable for all ages or not"
+        tests: 
+          - accepted_values: 
+              values: ['G', 'PG', 'PG-13', 'R', 'NC-17']
+      - name: description
+        description: "Explain the rating code means"
+        tests: 
+          - not_null
+      - name: rental_rate
+        description: "The price charged to rent this film"
+      - name: inventory_count
+        description: "How many stocks the store had for certain film"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: times_rented
+        description: "How many times the film has been rented"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: is_available
+        description: "Whether the film available for rented or not"
+        tests: 
+          - not_null

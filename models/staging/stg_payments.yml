@@ -1,0 +1,27 @@
+version: 2
+
+models: 
+  - name: stg_payments
+    description: "Cleaned payments data from raw Pagila data"
+    columns: 
+      - name: payment_id
+        description: "Unique identifier for each payment made by customer"
+        tests: 
+          - unique 
+          - not_null
+      - name: customer_id
+        description: "Identifier for customer who made the payment" 
+        tests: 
+          - not_null
+      - name: staff_id
+        description: "Identifier for staff who handling the payment"
+        tests: 
+          - not_null
+      - name: amount
+        description: "How much money customer pay for the rental"
+        tests: 
+          - not_null
+      - name: paid_at
+        description: "Date and time when customer made the transactions"
+        tests: 
+          - not_null

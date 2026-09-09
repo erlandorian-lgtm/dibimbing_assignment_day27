@@ -1,0 +1,19 @@
+version: 2
+
+models: 
+  - name: stg_inventory
+    description: "Cleaned inventory data from raw Pagila data"
+    columns: 
+      - name: inventory_id
+        description: "Unique identifier for inventory"
+        tests: 
+          - unique
+          - not_null
+      - name: film_id
+        description: "identifier for film"
+        tests: 
+          - not_null
+      - name: store_id
+        description: "identifier for each store"
+        tests: 
+          - not_null

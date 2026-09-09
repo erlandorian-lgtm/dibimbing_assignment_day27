@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: mart_film_performance
+    description: "Total revenue made by the rented films"
+    columns:
+      - name: film_id
+        description: "Unique identifier for each film"
+        tests:
+          - unique 
+          - not_null
+      - name: title
+        description: "Title of the film"
+        tests:
+          - not_null
+      - name: categories
+        description: "Categories of the film"
+        tests:
+          - not_null
+      - name: inventory_count
+        description: "How many film that the store has"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: times_rented
+        description: "How many times the film has been rented"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: total_revenue 
+        description: "Total amount of revenue from the rented film"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0

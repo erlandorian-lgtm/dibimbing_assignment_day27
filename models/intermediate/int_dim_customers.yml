@@ -1,0 +1,24 @@
+version: 2
+
+models: 
+  - name: int_dim_customers
+    description: "Customer information from full name, rentals and total lifetime payment"
+    columns: 
+      - name: customer_id
+        description: "Unique identifier for a customer"
+        tests: 
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Customer full name"
+        tests: 
+          - not_null
+      - name: total_rentals
+        description: "How many times customer made a transactions"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: lifetime_total_payment
+        description: "Sum of amount from transactions made by customer"

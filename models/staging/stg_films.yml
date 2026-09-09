@@ -1,0 +1,19 @@
+version: 2
+
+models: 
+  - name: stg_films
+    description: "Cleaned film data from raw Pagila data"
+    columns: 
+      - name: film_id
+        description: "Unique identifier for each film"
+        tests: 
+          - unique
+          - not_null 
+      - name : title
+        description: "Title of the film"
+        tests: 
+          - not_null
+      - name : rating
+        description: "Whether the film suitable for all ages or not"
+        tests:
+          - not_null

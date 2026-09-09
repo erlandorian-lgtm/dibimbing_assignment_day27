@@ -1,0 +1,40 @@
+version: 2
+
+models: 
+  - name: mart_daily_revenue
+    description: "Total revenue for every payments occured and made by customers"
+    tests: 
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - paid_date
+            - store_id
+    columns: 
+      - name: paid_date
+        description: "When the transactions happens"
+        tests:
+          - not_null
+      - name: store_id
+        description: "identifier for which store customers made the payment"
+        tests: 
+          - not_null
+      - name: total_payments
+        description: "Total payments done by customers"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: unique_customers
+        description: "How many different customers made the transactions"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0
+      - name: total_revenue
+        description: "Total revenue across all transactions"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range: 
+              arguments:
+                min_value: 0

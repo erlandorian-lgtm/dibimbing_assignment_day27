@@ -1,0 +1,18 @@
+version : 2
+
+models: 
+  - name: stg_customers
+    description: "One row per customer, renamed and cleaned from the raw Pagila"
+    columns: 
+    - name: customer_id
+      description: "Unique identifier for a customer"
+      tests: 
+        - unique
+        - not_null
+    - name: email
+      description: "Customer's email address"
+      tests: 
+        - not_null
+    - name: is_active
+      description: "Customer's account is currently active or not"
+      

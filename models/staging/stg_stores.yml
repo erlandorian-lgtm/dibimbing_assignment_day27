@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_stores
+    description: "Cleaned stores data from raw Pagila data"
+    columns:
+      - name: store_id
+        description: "Unique identifier for each stores"
+        tests: 
+          - unique 
+          - not_null
+      - name: manager_staff_id
+        description: "identifier for who lead the stores"
+        tests:
+          - not_null
+      - name: address_id
+        description: "identifier for where the stores located"
+        tests: 
+          - not_null
